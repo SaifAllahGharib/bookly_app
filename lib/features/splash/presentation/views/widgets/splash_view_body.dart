@@ -1,3 +1,5 @@
+import 'package:bookly_app/constants.dart';
+import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/features/splash/presentation/views/widgets/sliding_logo.dart';
 import 'package:flutter/material.dart';
 
@@ -13,21 +15,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
 
-  void _createSlidingLogoAnimation() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 600),
-    );
-    slidingAnimation =
-        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
-            .animate(animationController);
-    animationController.forward();
-  }
-
   @override
   void initState() {
     super.initState();
-    _createSlidingLogoAnimation();
+    _initSlidingLogoAnimation();
+    _navigateToHome();
   }
 
   @override
@@ -40,6 +32,30 @@ class _SplashViewBodyState extends State<SplashViewBody>
   Widget build(BuildContext context) {
     return Center(
       child: SlidingLogo(slidingAnimation: slidingAnimation),
+    );
+  }
+
+  void _initSlidingLogoAnimation() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 600),
+    );
+    slidingAnimation =
+        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
+            .animate(animationController);
+    animationController.forward();
+  }
+
+  void _navigateToHome() {
+    Future.delayed(
+      const Duration(milliseconds: navigationTime),
+      () {
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          HomeView.id,
+          (route) => false,
+        );
+      },
     );
   }
 }
