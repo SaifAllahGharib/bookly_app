@@ -11,7 +11,6 @@ class CustomListViewItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Colors.white,
           image: const DecorationImage(
             fit: BoxFit.fill,
             image: AssetImage(Assets.imageListItem),
