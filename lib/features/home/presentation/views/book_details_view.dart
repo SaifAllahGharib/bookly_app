@@ -2,8 +2,8 @@ import 'package:bookly_app/features/home/presentation/views/widgets/book_details
 import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {
-  static const String id = "home_details_view";
-  
+  static const String id = "/home_details_view";
+
   const BookDetailsView({super.key});
 
   @override

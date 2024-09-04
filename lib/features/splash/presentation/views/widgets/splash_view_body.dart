@@ -2,6 +2,7 @@ import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/features/splash/presentation/views/widgets/sliding_logo.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -50,11 +51,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(
       const Duration(milliseconds: navigationTime),
       () {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          HomeView.id,
-          (route) => false,
-        );
+        GoRouter.of(context).pushReplacement(HomeView.id);
       },
     );
   }
