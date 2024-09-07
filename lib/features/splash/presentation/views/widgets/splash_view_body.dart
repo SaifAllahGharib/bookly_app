@@ -39,7 +39,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void _initSlidingLogoAnimation() {
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 700),
     );
     slidingAnimation =
         Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
