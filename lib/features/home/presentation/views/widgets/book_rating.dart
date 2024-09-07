@@ -5,25 +5,36 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key});
+  final MainAxisAlignment mainAxisAlignment;
+
+  const BookRating({
+    super.key,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
-        const Icon(
+      mainAxisAlignment: mainAxisAlignment,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
+        Icon(
           FontAwesomeIcons.solidStar,
           color: starColor,
+          size: 14,
         ),
-        const SizedBox(width: 6.3),
-        const Text(
+        SizedBox(width: 6.3),
+        Text(
           "4.8",
           style: Styles.textStyle16,
         ),
-        const SizedBox(width: 5),
-        Text(
-          "(254)",
-          style: Styles.textStyle14.copyWith(color: numberRatingColor),
+        SizedBox(width: 5),
+        Opacity(
+          opacity: 0.5,
+          child: Text(
+            "(254)",
+            style: Styles.textStyle14,
+          ),
         ),
       ],
     );
