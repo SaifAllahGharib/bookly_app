@@ -1,6 +1,8 @@
 import 'package:bookly_app/core/utils/assets.dart';
+import 'package:bookly_app/features/search/presentaion/views/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({super.key});
@@ -19,7 +21,7 @@ class CustomHomeAppBar extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-              // Code on press on icon
+              GoRouter.of(context).push(SearchView.id);
             },
             icon: const Icon(
               FontAwesomeIcons.magnifyingGlass,
