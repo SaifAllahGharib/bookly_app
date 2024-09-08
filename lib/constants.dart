@@ -5,3 +5,4 @@ const starColor = Color(0xffFFDD4F);
 const numberRatingColor = Color(0xff707070);
 const navigationTime = 1700;
 const gtFontFamily = "GT";
+const buttonBorderRadios = 12.0;
