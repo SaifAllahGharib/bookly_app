@@ -1,20 +1,30 @@
+import 'package:bookly_app/core/errors/failure.dart';
+import 'package:bookly_app/core/utils/api.dart';
 import 'package:bookly_app/features/home/data/models/book_model/Book_model.dart';
-import 'package:bookly_app/features/home/data/models/failure_model/Failure_model.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo.dart';
+import 'package:dartz/dartz.dart';
 
 class HomeRepoImpl implements HomeRepo {
-  @override
-  Future<FailureModel> failure() {
-    throw UnimplementedError();
-  }
+  final Api api;
+  final List<BookModel> _books = [];
+  late final dynamic _data;
+
+  HomeRepoImpl(this.api);
 
   @override
-  Future<List<BookModel>> fetchBestSellerBooks() {
-    throw UnimplementedError();
-  }
+  Future<Either<Failure, List<BookModel>>> fetchBooks() async {
+    try {
+      _data = await api.get(
+        endPoint:
+            "volumes?q=subject:Programming&Sorting=newest&Filtering=free-ebooks",
+      );
 
-  @override
-  Future<List<BookModel>> fetchFeaturedBooks() {
-    throw UnimplementedError();
+      for (var item in _data["items"]) {
+        _books.add(BookModel.fromJson(item));
+      }
+      return right(_books);
+    } catch (e) {
+      return left(ServerFailure());
+    }
   }
 }
