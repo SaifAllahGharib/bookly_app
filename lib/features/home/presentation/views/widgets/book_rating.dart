@@ -6,10 +6,14 @@ import '../../../../../core/utils/styles.dart';
 
 class BookRating extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
+  final int rating;
+  final int count;
 
   const BookRating({
     super.key,
     this.mainAxisAlignment = MainAxisAlignment.start,
+    required this.rating,
+    required this.count,
   });
 
   @override
@@ -17,22 +21,22 @@ class BookRating extends StatelessWidget {
     return Row(
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
-        Icon(
+      children: [
+        const Icon(
           FontAwesomeIcons.solidStar,
           color: starColor,
           size: 14,
         ),
-        SizedBox(width: 6.3),
+        const SizedBox(width: 6.3),
         Text(
-          "4.8",
+          "$rating",
           style: Styles.textStyle16,
         ),
-        SizedBox(width: 5),
+        const SizedBox(width: 5),
         Opacity(
           opacity: 0.5,
           child: Text(
-            "(254)",
+            "($count)",
             style: Styles.textStyle14,
           ),
         ),

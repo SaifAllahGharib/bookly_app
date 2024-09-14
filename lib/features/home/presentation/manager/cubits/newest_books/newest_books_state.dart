@@ -1,4 +1,4 @@
-import 'package:bookly_app/features/home/data/models/book_model/Book_model.dart';
+import 'package:bookly_app/features/home/data/models/book_model/BookModel.dart';
 
 abstract class NewestBooksState {}
 

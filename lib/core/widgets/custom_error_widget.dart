@@ -13,7 +13,7 @@ class CustomErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        "Error",
+        errorMsg,
         style: Styles.textStyle20.copyWith(
           color: Colors.red,
           fontWeight: FontWeight.bold,

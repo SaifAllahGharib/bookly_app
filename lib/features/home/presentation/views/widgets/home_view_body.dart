@@ -12,6 +12,7 @@ class HomeViewBody extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.only(left: 30, top: 30, right: 30),
       child: CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
             child: Column(
@@ -28,9 +29,7 @@ class HomeViewBody extends StatelessWidget {
               ],
             ),
           ),
-          SliverToBoxAdapter(
-            child: BestSellerListView(),
-          ),
+          BestSellerListView(),
         ],
       ),
     );
