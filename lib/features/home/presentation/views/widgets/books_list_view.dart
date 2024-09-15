@@ -3,7 +3,7 @@ import 'package:bookly_app/core/widgets/progress.dart';
 import 'package:bookly_app/features/home/presentation/manager/cubits/featured_books/featured_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/manager/cubits/featured_books/featured_books_state.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BooksListView extends StatelessWidget {
