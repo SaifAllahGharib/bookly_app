@@ -2,9 +2,11 @@ import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/progress.dart';
 import 'package:bookly_app/features/home/presentation/manager/cubits/featured_books/featured_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/manager/cubits/featured_books/featured_books_state.dart';
+import 'package:bookly_app/features/home/presentation/views/book_details_view.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class BooksListView extends StatelessWidget {
   const BooksListView({super.key});
@@ -21,10 +23,16 @@ class BooksListView extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(right: 15),
-                  child: CustomBookImage(
-                    bookModel: state.books[index],
+                return GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context)
+                        .push(BookDetailsView.id, extra: state.books[index]);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: CustomBookImage(
+                      bookModel: state.books[index],
+                    ),
                   ),
                 );
               },

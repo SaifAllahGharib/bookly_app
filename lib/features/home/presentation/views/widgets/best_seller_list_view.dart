@@ -26,7 +26,7 @@ class BestSellerListView extends StatelessWidget {
             },
           );
         } else if (state is NewestBooksFailure) {
-          return SliverToBoxAdapter(
+          return SliverFillRemaining(
             child: CustomErrorWidget(errorMsg: state.errorMsg),
           );
         } else {

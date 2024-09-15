@@ -8,7 +8,10 @@ class BookDetailsView extends StatefulWidget {
   static const String id = "/home_details_view";
   final BookModel bookModel;
 
-  const BookDetailsView({super.key, required this.bookModel});
+  const BookDetailsView({
+    super.key,
+    required this.bookModel,
+  });
 
   @override
   State<BookDetailsView> createState() => _BookDetailsViewState();
@@ -25,9 +28,11 @@ class _BookDetailsViewState extends State<BookDetailsView> {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        body: BookDetailsViewBody(),
+        body: BookDetailsViewBody(
+          bookModel: widget.bookModel,
+        ),
       ),
     );
   }

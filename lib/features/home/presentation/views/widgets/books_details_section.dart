@@ -1,31 +1,45 @@
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/BookModel.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/books_action.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class BooksDetailsSection extends StatelessWidget {
-  const BooksDetailsSection({super.key});
+  final BookModel bookModel;
+
+  const BooksDetailsSection({
+    super.key,
+    required this.bookModel,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * .19,
+          padding: EdgeInsets.only(
+            right: MediaQuery.of(context).size.width * .19,
+            left: MediaQuery.of(context).size.width * .19,
+            top: 20,
           ),
-          // child: const CustomBookImage(),
+          child: CustomBookImage(bookModel: bookModel),
         ),
         const SizedBox(height: 43),
-        const Text(
-          "The Jungle Book",
+        Text(
+          (bookModel.volumeInfo?.title == null)
+              ? ""
+              : bookModel.volumeInfo!.title!,
           style: Styles.textStyle30,
+          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 6),
         Opacity(
           opacity: 0.7,
           child: Text(
-            "Rudyard Kipling",
+            (bookModel.volumeInfo?.authors == null)
+                ? ""
+                : bookModel.volumeInfo!.authors![0],
             style: Styles.textStyle18.copyWith(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w500,
@@ -33,13 +47,17 @@ class BooksDetailsSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 18),
-        const BookRating(
+        BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
-          rating: 4,
-          count: 245,
+          rating: (bookModel.volumeInfo?.averageRating == null)
+              ? 0
+              : bookModel.volumeInfo!.averageRating!,
+          count: (bookModel.volumeInfo?.ratingsCount == null)
+              ? 0
+              : bookModel.volumeInfo!.ratingsCount!,
         ),
         const SizedBox(height: 37),
-        const BooksAction(),
+        BooksAction(bookModel: bookModel),
       ],
     );
   }
